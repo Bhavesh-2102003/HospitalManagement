@@ -36,7 +36,7 @@ public class SecurityConfig {
 				.requestMatchers("/api/auth/signup").permitAll()
 				.requestMatchers("/api/auth/login").authenticated()
 				.requestMatchers("/api/patient/add").authenticated()
-				.requestMatchers("/api/medicalHistory/add/{pid}").hasAuthority("patient")
+				.requestMatchers("/api/medicalHistory/add").hasAuthority("patient")
 				.requestMatchers("/api/patients/{did}").hasAuthority("doctor")
 				.anyRequest().permitAll()
 			)

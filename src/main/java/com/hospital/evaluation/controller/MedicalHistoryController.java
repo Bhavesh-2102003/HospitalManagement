@@ -18,22 +18,10 @@ public class MedicalHistoryController {
 	@Autowired
 	MedicalHistoryService medicalHistoryService;
 	
-	@Autowired
-	PatientService patientService;
+		
 	
-	@PostMapping("/api/medicalHistory/add/{pid}")
-	public MedicalHistory addMedicalHistory(@RequestBody MedicalHistory medicalHistory,
-											@PathVariable int pid) throws InvalidIDException
-	{
-		Patient patient=patientService.findById(pid);
-		
-		if(patient==null)
-		{
-			throw new InvalidIDException("Enter Valid Patient ID");
-		}
-		
-		medicalHistory.setPatient(patient);
-		
-		return medicalHistoryService.addMedicalHistory(medicalHistory);
+	@PostMapping("/api/medicalHistory/add")
+	public MedicalHistory addMedicalHistory(@RequestBody MedicalHistory medicalHistory) {
+	    return medicalHistoryService.addMedicalHistory(medicalHistory);
 	}
 }

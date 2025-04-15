@@ -1,5 +1,7 @@
 package com.hospital.evaluation.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -34,6 +36,11 @@ public class AuthService {
 		user.setPassword(encodedPass);
 		
 		return authRepository.save(user);
+	}
+
+	public User findById(int uid) {
+		Optional<User> optional=authRepository.findById(uid);
+		return optional.get();
 	}
 	
 	

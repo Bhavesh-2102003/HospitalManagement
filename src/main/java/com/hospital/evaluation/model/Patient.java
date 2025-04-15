@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Patient {
@@ -15,6 +16,28 @@ public class Patient {
 	private String name;
 	
 	private int age;
+	
+	@OneToOne
+	private MedicalHistory medicalHistory;
+	
+	@OneToOne
+	private User user;
+
+	public MedicalHistory getMedicalHistory() {
+		return medicalHistory;
+	}
+
+	public void setMedicalHistory(MedicalHistory medicalHistory) {
+		this.medicalHistory = medicalHistory;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public Patient(int id, String name, int age) {
 		super();
